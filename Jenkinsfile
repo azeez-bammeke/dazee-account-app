@@ -28,7 +28,7 @@ pipeline {
             stage('Build docker image') {
                             steps {
                                     script {
-                                            customImage = docker.build("abammeke/currency-exchange:${BUILD_NUMBER}")
+                                            customImage = docker.build("abammeke/dazee-account-app:${BUILD_NUMBER}")
                                     }
                             }
             }
@@ -45,8 +45,8 @@ pipeline {
             }
             post {
                     cleanup {
-                        sh "docker rmi abammeke/currency-exchange:${BUILD_NUMBER}"
-                        sh "docker rmi registry.hub.docker.com/abammeke/currency-exchange"
+                        sh "docker rmi abammeke/dazee-account-app:${BUILD_NUMBER}"
+                        sh "docker rmi registry.hub.docker.com/abammeke/dazee-account-app"
                     }
                 }
 }

@@ -1,4 +1,4 @@
-FROM openjdk:21-slim-bullseye
+FROM openjdk:17-jdk-slim
 #Information around who maintains the image
 MAINTAINER webnet.com
 
