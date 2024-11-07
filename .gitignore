@@ -1,0 +1,53 @@
+# Ignore Maven build output
+target/
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iws
+*.iml
+*.ipr
+mvnw
+mvnw.cmd
+.idea
+
+# Ignore Maven Wrapper if you don't use it
+.mvn/
+
+# Ignore logs
+*.log
+
+# Ignore IDE specific files
+.vscode/
+
+# Ignore OS specific files
+.DS_Store       # macOS
+Thumbs.db        # Windows
+
+# Ignore temporary files
+*.swp            # vim
+*~               # backup files
+*.bak            # backup files
+
+# Ignore compiled class files
+*.class
+
+# Ignore jar, war, ear files
+*.jar
+*.war
+*.ear
+
+# Ignore Maven dependency directory
+*.m2/
+
+# Ignore NetBeans files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.cache/
+
+# Ignore temporary files
+*.log
+*.sql
+*.sqlite
