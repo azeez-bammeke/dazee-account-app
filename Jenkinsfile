@@ -2,9 +2,12 @@ def customImage
 
 pipeline {
 	agent any
+	environment {
+                    SPRING_PROFILES_ACTIVE = 'dev'
+                }
 	    tools {
 	        maven 'maven'
-	            jdk 'JDK17'
+	            jdk 'JDK21'
 	    }
     stages {
             stage('Build Maven') {
@@ -41,8 +44,19 @@ pipeline {
                                 }
                             }
                         }
-                    }
             }
+
+            stage('Deploy to K8') {
+                                    steps {
+                                        script {
+                                            def imageName = "abammeke/dazee-account-app:${BUILD_NUMBER}"
+                                            sh "kubectl apply -f k8s/deployment.yaml"
+                                            sh "kubectl apply -f k8s/service.yaml"
+                                        }
+                                    }
+                             }
+             }
+
             post {
                     cleanup {
                         sh "docker rmi abammeke/dazee-account-app:${BUILD_NUMBER}"

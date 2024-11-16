@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dazee-account-app
+  namespace: dazee-banking-app
+spec:
+  selector:
+    matchLabels:
+      app: dazee-account-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dazee-account-app
+    spec:
+      containers:
+        - name: dazee-account-app
+          image: abammeke/dazee-account-app:latest
+          ports:
+            - containerPort: 8074
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: SPRING_CONFIG_IMPORT
+              value: "configserver:http://dazee-config-server-service.dazee-banking-app.svc.cluster.local:8071/"
+      imagePullSecrets:
+        - name: docker-hub-credentials

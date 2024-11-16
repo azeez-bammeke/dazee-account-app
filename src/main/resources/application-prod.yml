@@ -1,0 +1,5 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+    import: "configserver:http://dazee-config-server-service.dazee-banking-app.svc.cluster.local:8071/"
